@@ -5,7 +5,7 @@ module EEE
   class TestHelper
 
     def eee_server(index = 0)
-      Scenario.new Methods::Client, config['servers'][index]
+      Scenario.new Methods::Client.new, config['servers'][index]
     end
 
     def eee_user(name = nil, domain = 0, server = 0)

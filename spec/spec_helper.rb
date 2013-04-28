@@ -1,1 +1,1 @@
-require File.expand_path '../../lib/eee', __FILE__
+require_relative '../lib/eee'
