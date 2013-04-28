@@ -2,7 +2,7 @@ require 'eee'
 
 module EEE
 
-  module World
+  class TestHelper
 
     def eee_server(index = 0)
       Scenario.new Methods::Client, config['servers'][index]
@@ -28,7 +28,13 @@ module EEE
     private
 
     def config
-      YAML.load_file File.expand_path('../../config.yml',  __FILE__)
+      YAML.load_file @config
+    end
+
+    public
+
+    def initialize(config_filename)
+      @config = config_filename
     end
 
   end
