@@ -14,7 +14,7 @@ module EEE
         name = config['default_user'] if name.nil?
 
         user_config = config['users'][name]
-        server_config = config['servers'][name]
+        server_config = config['servers'][server]
         user_config['username'] =
           "#{name.downcase}@#{server_config['domains'][domain]}"
 
