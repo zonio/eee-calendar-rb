@@ -46,6 +46,25 @@ module EEE
 
     end
 
+    describe "#send" do
+
+      it "calls EEE methods on default URI" do
+      end
+
+      it "calls EEE methods on given URI" do
+      end
+
+      it "creates HTTP requests from #append_call parameters" do
+      end
+
+      it "calls a block given to #append_call with the result" do
+      end
+
+      it "returns with success flag and the result of the call" do
+      end
+
+    end
+
   end
 
 end

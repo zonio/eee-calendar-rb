@@ -37,7 +37,7 @@ module EEE
         end
 
         call[:call].xmlrpc_result = XMLRPC::Marshal.load_response response.body
-        param = call[:call].result
+        param = call[:call].xmlrpc_result
 
         call[:block].call param if call[:block]
       end
