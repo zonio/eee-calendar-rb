@@ -17,13 +17,31 @@ module EEE
 
       describe "#params=" do
 
-        it "translates abstract parameters to XML-RPC paramers" do
+        it "translates common Ruby type parameters to XML-RPC parameters" do
           method_call = Call.new 'ESClient.getServerAttributes',
             [ { type: String } ], nil
           method_call.params = ['']
 
           method_call.xmlrpc_params.should have(1).item
           method_call.xmlrpc_params.first.should eq ''
+        end
+
+        it "translates EEE::Entities type parameters to XML-RPC parameters" do
+        end
+
+        it "translates EEE::Entities::Attribute type parameters " +
+           "to XML-RPC parameters" do
+        end
+
+        it "translates RiCal::Component type parameters to " +
+           "XML-RPC parameters" do
+        end
+
+        it "translates array of EEE::Entities type parameters to " +
+           "XML-RPC parameters" do
+        end
+
+        it "sets default parameter value to unspecified parameters" do
         end
 
       end
