@@ -60,7 +60,11 @@ module EEE
       it "calls a block given to #append_call with the result" do
       end
 
-      it "returns with success flag and the result of the call" do
+      it "returns with true success flag and the result of the call " +
+         "on success" do
+      end
+
+      it "returns with false success flag on failure" do
       end
 
     end

@@ -29,7 +29,7 @@ module EEE
                                                  *call[:call].xmlrpc_params)
 
         response = http.request request
-        unless response.code == 200 and
+        unless response.code == '200' and
             response['Content-Type'] =~ /^text\/xml(;.+)?$/
           ok = false
           param = nil
@@ -37,7 +37,7 @@ module EEE
         end
 
         call[:call].xmlrpc_result = XMLRPC::Marshal.load_response response.body
-        param = call[:call].xmlrpc_result
+        param = call[:call].result
 
         call[:block].call param if call[:block]
       end
