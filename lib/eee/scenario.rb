@@ -26,7 +26,7 @@ module EEE
         request = Net::HTTP::Post.new uri.path
         request['Content-Type'] = 'text/xml'
         request.body = XMLRPC::Marshal.dump_call(call[:call].name,
-                                                 call[:call].xmlrpc_params)
+                                                 *call[:call].xmlrpc_params)
 
         response = http.request request
         unless response.code == 200 and
