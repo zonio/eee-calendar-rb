@@ -36,13 +36,15 @@ TODO: This Gem has not been published to RubyGems.org yet.
 
 This is typical sequence to connect to EEE server as client:
 
-    eee_server = Scenario.new Methods::Client.new,
-      host: zonio.net
-      port: 4446
-    eee_server.append_call :authenticate,
-      'filip.zrust@zonio.net', 'p4ssw0rd'
-    eee_server.append_call :get_calendars
-    ok, response = eee_server.send
+```ruby
+eee_server = Scenario.new Methods::Client.new,
+  host: zonio.net
+  port: 4446
+eee_server.append_call :authenticate,
+  'filip.zrust@zonio.net', 'p4ssw0rd'
+eee_server.append_call :get_calendars
+ok, response = eee_server.send
+```
 
 ## Contributing
 
