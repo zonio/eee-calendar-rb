@@ -38,13 +38,14 @@ module EEE
 
       attr_reader :attrs
 
-      def set_attribute(name, value, is_public = true)
+      def set_attribute(name, value = '', is_public = true)
         if name.is_a? Attribute
           attribute = name
         else 
           attribute = Attribute.new name, value, is_public
         end
 
+        @attrs ||= []
         @attrs = @attrs.select { |attr| attr.name != attribute.name }
         @attrs << attribute
       end
@@ -98,7 +99,8 @@ module EEE
       end
 
       def self.[](data)
-        attribute = new data['name'], data['value'], data['is_public']
+        attribute = new data['name'] || data[:name],
+          data['value'] || data[:value], data['is_public'] || data[:is_public]
       end
 
     end
