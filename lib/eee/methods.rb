@@ -22,7 +22,7 @@ module EEE
           param_def = param_defs_enum.next
           if param_def[:type].respond_to?(:first) and
               Entities::Base > param_def[:type].first
-            @xmlrpc_params << param.map(:id).join(':')
+            @xmlrpc_params << param.map(&:id).join(':')
           elsif Entities::Base > param_def[:type]
             @xmlrpc_params << param.id
           elsif Entities::Attribute >= param_def[:type]
