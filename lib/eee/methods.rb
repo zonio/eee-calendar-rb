@@ -53,7 +53,7 @@ module EEE
           @result = @result_def[:type][xmlrpc_result]
         elsif @result_def and @result_def[:type] and
             RiCal::Component >= @result_def[:type]
-          @result = RiCal.parse_string xmlrpc_result
+          @result = RiCal.parse_string(xmlrpc_result)[0]
         else
           @result = xmlrpc_result
         end
