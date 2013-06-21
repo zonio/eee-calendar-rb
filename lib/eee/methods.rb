@@ -30,8 +30,10 @@ module EEE
             @xmlrpc_params << param.value
             @xmlrpc_params << param.is_public
           elsif RiCal::Component >= param_def[:type]
-            @xmlrpc_params << param.export
-          else
+            @xmlrpc_params << param.to_s
+          elsif DateTime >= param_def[:type]
+            @xmlrpc_params << param.strftime("%F %T")
+          elsif
             @xmlrpc_params << param
           end
         end
@@ -42,20 +44,20 @@ module EEE
       end
 
       def xmlrpc_result=(xmlrpc_result)
-        if @result_def and @result_def[:type] and
+        if xmlrpc_result.is_a? XMLRPC::FaultException or not @result_def
+          @result = xmlrpc_result
+        elsif @result_def[:type] and
             @result_def[:type].respond_to?(:first) and
             (Entities::Base > @result_def[:type].first or
              Entities::Attribute >= @result_def[:type].first)
           @result = xmlrpc_result.map { |data| @result_def[:type].first[data] }
-        elsif @result_def and @result_def[:type] and
+        elsif @result_def[:type] and
             (Entities::Base > @result_def[:type] or
              Entities::Attribute >= @result_def[:type])
           @result = @result_def[:type][xmlrpc_result]
-        elsif @result_def and @result_def[:type] and
+        elsif @result_def[:type] and
             RiCal::Component >= @result_def[:type]
           @result = RiCal.parse_string(xmlrpc_result)[0]
-        else
-          @result = xmlrpc_result
         end
       end
 
