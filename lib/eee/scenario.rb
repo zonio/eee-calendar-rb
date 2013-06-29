@@ -7,7 +7,6 @@ module EEE
   class Scenario
 
     def append_call(method_name, *params, &block)
-      @queue ||= []
       @queue << {
         call: @interface.send(method_name, params),
         block: block
@@ -42,12 +41,14 @@ module EEE
         call[:block].call param if call[:block]
       end
 
+      @queue = []
       [ok, param]
     end
 
     def initialize(interface, defaults = {})
       @interface = interface
       @defaults = defaults
+      @queue = []
     end
 
     private
