@@ -30,7 +30,8 @@ module EEE
       def users(domain = 0, server = 0)
         server_config = config['servers'][server]
         config['users'].map do |user|
-          "#{user.first.downcase}@#{server_config['domains'][domain]}"
+          { username: "#{user.first.downcase}@#{server_config['domains'][domain]}",
+            password: user[1]['password'] }
         end
       end
 
