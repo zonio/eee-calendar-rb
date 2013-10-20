@@ -10,11 +10,12 @@ module EEE
         Scenario.new Methods::Client.new, config['servers'][index]
       end
 
-      def user(name = nil, domain = 0, server = 0)
+      def user(name = nil, domain)
         name = config['default_user'] if name.nil?
+        domain = config['servers']
 
         user_config = config['users'][name]
-        server_config = config['servers'][server]
+        server_config = config['servers'][domain]
         user_config['username'] =
           "#{name.downcase}@#{server_config['domains'][domain]}"
 
@@ -27,25 +28,9 @@ module EEE
         config['users'][name]['password']
       end
 
-      def users(domain = 0, server = 0)
-        server_config = config['servers'][server]
-        config['users'].map do |user|
-          { username: "#{user.first.downcase}@#{server_config['domains'][domain]}",
-            password: user[1]['password'] }
-        end
-      end
-
-      def calendars
-        config['calendars']
-      end
-
-      private
-
       def config
         YAML.load_file @config
       end
-
-      public
 
       def initialize(config_filename)
         @config = config_filename
