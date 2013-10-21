@@ -25,7 +25,7 @@ module EEE
       def user_password(name = nil)
         name = config['default_user'] if name.nil?
 
-        config['users'][name]['password']
+        config['users'][name] ? config['users'][name]['password'] : nil
       end
 
       def config
