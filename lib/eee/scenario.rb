@@ -41,6 +41,8 @@ module EEE
         call[:block].call param if call[:block]
       end
 
+      http.finish
+
       @queue = []
       [ok, param]
     end
