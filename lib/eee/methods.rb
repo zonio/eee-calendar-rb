@@ -33,7 +33,7 @@ module EEE
           elsif RiCal::Component >= param_def[:type]
             @xmlrpc_params << param.to_s
           elsif DateTime >= param_def[:type]
-            @xmlrpc_params << param.strftime("%F %T")
+            @xmlrpc_params << param.new_offset(0).rfc3339
           elsif
             @xmlrpc_params << param
           end
