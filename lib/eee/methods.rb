@@ -11,6 +11,7 @@ module EEE
       attr_reader :name
       attr_reader :xmlrpc_params
       attr_reader :result
+      attr_reader :param_defs
 
       def params=(params)
         @xmlrpc_params = []
