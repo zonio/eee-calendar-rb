@@ -67,10 +67,23 @@ module EEE
       URI "https://#{default_host}:#{default_port}/RPC2"
     end
 
-    def default_http(uri)
+    def default_http_options(uri)
+      http_defaults = @defaults['http'] || {}
+
+      options = {}
+
+      options[:use_ssl] = http_defaults['use_ssl'] || uri.scheme == 'https'
+
+      if http_defaults['verify_mode']
+        verify_mode = "VERIFY_#{http_defaults['verify_mode'].upcase}"
+        verify_mode[/\s+/] = '_'
+        options[:verify_mode] = OpenSSL::SSL.const_get verify_mode.to_sym
+      end
+    end
+
+    def default_http(uri, options = {})
       Net::HTTP.start uri.host, uri.port,
-        use_ssl: true,
-        verify_mode: OpenSSL::SSL::VERIFY_NONE
+        default_http_options(uri).merge(options)
     end
 
   end
