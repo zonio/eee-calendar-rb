@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = EEE::VERSION
   spec.authors       = ["Zonio", "Filip Zrůst"]
   spec.email         = ["developers@zonio.net", "filip.zrust@zonio.net"]
-  spec.description   = %q{EEE Protocol Wrapper}
-  spec.summary       = %q{An abstraction above XML-RPC API of EEE protocol.}
+  spec.description   = %q{EEE (Easy Event Exchange) is an open client-server protocol for exchange of calendar data.}
+  spec.summary       = %q{Wrapper around both ESClient (client to server) and ESServer (server to server) method calls. Additionally, convenient scenario runner (making multiple method calls using one TCP channel) and test helpers are provided.}
   spec.homepage      = "http://zonio.net/"
   spec.license       = "MIT"
 
