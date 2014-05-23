@@ -76,9 +76,15 @@ module EEE
 
       if http_defaults['verify_mode']
         verify_mode = "VERIFY_#{http_defaults['verify_mode'].upcase}"
-        verify_mode[/\s+/] = '_'
+        begin
+          verify_mode[/\s+/] = '_'
+        rescue
+          # No spaces found throws IndexError exception.
+        end
         options[:verify_mode] = OpenSSL::SSL.const_get verify_mode.to_sym
       end
+
+      options
     end
 
     def default_http(uri, options = {})
