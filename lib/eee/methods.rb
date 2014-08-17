@@ -186,7 +186,7 @@ module EEE
 
       eee_method :get_user_permissions do |m|
         m.in Entities::Calendar
-        m.out Entities::UserPermission
+        m.out [Entities::UserPermission]
       end
 
       eee_method :set_group_permission do |m|
@@ -198,7 +198,7 @@ module EEE
 
       eee_method :get_group_permissions do |m|
         m.in Entities::Calendar
-        m.out Entities::GroupPermission
+        m.out [Entities::GroupPermission]
       end
 
       eee_method :subscribe_calendar do |m|
