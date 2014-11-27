@@ -5,10 +5,9 @@ protocol for exchange of calendar data. The protocol specifies
 communication between client and server and servers themselves. It
 also has additional support for scheduling and server administration.
 
-This Ruby Gem implements both ESClient (server to client) and ESServer
-(server to server) method calls. Additionally, convenient scenario
-runner (making multiple method calls using one TCP channel) and test
-helpers are provided.
+This Ruby Gem implements ESClient (server to client) method calls.
+Additionally, convenient scenario runner (making multiple method
+calls using one TCP channel) and test helpers are provided.
 
 Although this Gem follows the EEE specification, it does provides
 additional comfort. Many "get" methods expect query parameter to be
