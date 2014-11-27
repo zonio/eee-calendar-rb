@@ -345,25 +345,6 @@ module EEE
 
     end
 
-    class Server
-      include Definition
-
-      eee_method :free_busy do |m|
-        m.in Entities::User
-        m.in DateTime
-        m.in DateTime
-        m.in RiCal::Component::Timezone
-        m.out RiCal::Component::Freebusy
-      end
-
-      eee_method :deliver_object do |m|
-        m.in String # TODO there's no iTIP implementation for Ruby to
-                    # our knowledge
-        m.out TrueClass
-      end
-
-    end
-
   end
 
 end
