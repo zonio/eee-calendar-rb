@@ -16,7 +16,7 @@ module EEE
     end
 
     def send(uri = nil, http = nil)
-      uri ||= default_uri
+      uri ||= default_uri @defaults['http']['use_ssl']
       http ||= default_http uri
       ok = true
       param = nil
@@ -63,8 +63,8 @@ module EEE
       @defaults['port'] || 4444
     end
 
-    def default_uri
-      URI "https://#{default_host}:#{default_port}/RPC2"
+    def default_uri(use_ssl = true)
+      URI "http#{use_ssl ? "s" : ""}://#{default_host}:#{default_port}/RPC2"
     end
 
     def default_http_options(uri)
